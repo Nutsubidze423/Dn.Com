@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Redseem Clothing",
+    "description": "Modern clothing e-commerce website",
+    "image": "./src/assets/1.png",
+    "tags": ["JavaScript", "HTML", "CSS"],
+    "liveUrl": "https://voluble-douhua-67fd8e.netlify.app/shop.html"
+  },
+  {
+    "id": 2,
+    "name": "SpaceTourism",
+    "description": "Space Travel Agency Concept",
+    "image": "./src/assets/2.png",
+    "tags": ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
+    "liveUrl": "https://spacetourism-gules.vercel.app/"
+  }
+]
