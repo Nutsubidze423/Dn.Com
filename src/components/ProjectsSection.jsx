@@ -1,121 +1,217 @@
-import { motion } from 'framer-motion';
-import { projects } from '../data/projects';
-import MagneticButton from './MagneticButton';
+import { motion } from "framer-motion";
+import { projects } from "../data/projects";
+import redseemImage from "../assets/1.png";
+import spaceTourismImage from "../assets/2.png";
 
 const ProjectsSection = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 100 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-200px" },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+  };
+
   return (
-    <section className="py-48 bg-black relative overflow-hidden" id="projects">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black pointer-events-none" />
-      
-      {/* Section header */}
-      <div className="relative z-10 container mx-auto px-6">
-        <motion.h2 
+    <section className="py-32 px-8 md:px-20 bg-black" id="projects">
+      {/* Section Header */}
+      <div className="max-w-7xl mx-auto mb-24">
+        <div className="flex justify-between items-start mb-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-6xl md:text-7xl lg:text-8xl font-bold text-white"
+          >
+            FEATURED
+          </motion.h2>
+          <p className="text-xl text-gray-500 mt-4">﹁ პ რ ო ე ქ ტ ე ბ ი ﹂</p>
+        </div>
+        <motion.h2
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[120px] leading-[0.9] font-black mb-24"
-          style={{
-            fontFamily: "'Inter', 'SF Pro Display', -apple-system, sans-serif",
-            fontWeight: 900
-          }}
+          transition={{ delay: 0.1 }}
+          className="text-6xl md:text-7xl lg:text-8xl font-bold text-white"
         >
           PROJECTS
         </motion.h2>
-        
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 gap-32 mb-24">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative"
-            >
-              {/* Project card */}
-              <div className="relative overflow-hidden rounded-3xl bg-gray-900/50 hover:bg-gray-900/80 transition-colors duration-500">
-                {/* Image with hover effect */}
-                <motion.div 
-                  className="relative h-[800px] overflow-hidden"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <img 
-                    src={project.image} 
-                    alt={project.name}
-                    className="w-full h-full object-cover"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/90 opacity-80" />
-                  
-                  {/* Project info overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-20">
-                    <motion.div
-                      initial={{ y: 50, opacity: 0 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <h3 className="text-8xl font-black mb-8" style={{ letterSpacing: '-0.05em' }}>
-                        {project.name}
-                      </h3>
-                      <p className="text-2xl text-gray-300 mb-12 max-w-2xl leading-relaxed">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-6 mb-12">
-                        {project.tags.map((tag) => (
-                          <span 
-                            key={tag}
-                            className="px-6 py-3 bg-gray-800 rounded-full text-sm uppercase tracking-wider"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <MagneticButton
-                        href={project.liveUrl}
-                        className="group relative px-12 py-6 text-xl font-bold uppercase tracking-wider"
-                      >
-                        <span className="relative z-10">VIEW PROJECT</span>
-                        <div className="absolute inset-0 bg-yellow-400/10 group-hover:bg-yellow-400/20 rounded-full transition-colors duration-500" />
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 group-hover:translate-x-2 transition-transform duration-500">
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                          </svg>
-                        </div>
-                      </MagneticButton>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center"
-        >
-          <MagneticButton
-            href="#contact"
-            className="group relative px-16 py-8 text-2xl font-black uppercase tracking-wider"
-          >
-            <span className="relative z-10">CONTACT ME</span>
-            <div className="absolute inset-0 bg-yellow-400/10 group-hover:bg-yellow-400/20 rounded-full transition-colors duration-500" />
-            <div className="absolute right-6 top-1/2 -translate-y-1/2 group-hover:translate-x-3 transition-transform duration-500">
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+      </div>
+
+      {/* Project 1 - Redseem Clothing */}
+      <motion.div {...fadeInUp} className="max-w-7xl mx-auto mb-32">
+        {/* MASSIVE Image Container */}
+        <div className="relative overflow-hidden rounded-2xl group mb-12">
+          {/* Image reveal overlay */}
+          <motion.div
+            initial={{ scaleX: 1 }}
+            whileInView={{ scaleX: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 bg-white origin-right z-10"
+          />
+
+          {/* The actual image - VERY TALL */}
+          <div className="relative h-[500px] md:h-[700px] lg:h-[850px]">
+            <img
+              src={redseemImage}
+              alt="Redseem Clothing"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+            {/* Hover content */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
+              <motion.div
+                initial={{ y: 40 }}
+                whileHover={{ y: 0 }}
+                className="text-center"
+              >
+                <p className="text-white text-3xl font-semibold mb-2">
+                  VIEW PROJECT
+                </p>
+                <p className="text-white/70 text-lg">Click to explore →</p>
+              </motion.div>
             </div>
-          </MagneticButton>
-        </motion.div>
+          </div>
+        </div>
+
+        {/* Project Info */}
+        <div>
+          <a
+            href="https://voluble-douhua-67fd8e.netlify.app/shop.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 hover:text-[#D4AF37] transition-colors duration-300 cursor-pointer">
+              REDSEEM CLOTHING
+            </h3>
+          </a>
+
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-8 max-w-3xl">
+            Modern clothing e-commerce website with clean design and seamless
+            shopping experience. Built with a focus on user experience and
+            visual storytelling.
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            <span className="px-6 py-2.5 border border-[#333] rounded-full text-sm uppercase tracking-wide text-gray-400 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 cursor-pointer">
+              JAVASCRIPT
+            </span>
+            <span className="px-6 py-2.5 border border-[#333] rounded-full text-sm uppercase tracking-wide text-gray-400 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 cursor-pointer">
+              HTML
+            </span>
+            <span className="px-6 py-2.5 border border-[#333] rounded-full text-sm uppercase tracking-wide text-gray-400 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 cursor-pointer">
+              CSS
+            </span>
+          </div>
+
+          <a
+            href="https://voluble-douhua-67fd8e.netlify.app/shop.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[#D4AF37] font-semibold text-lg hover:gap-4 transition-all duration-300"
+          >
+            VISIT LIVE SITE
+            <span>→</span>
+          </a>
+        </div>
+      </motion.div>
+
+      {/* Project 2 - SpaceTourism (IDENTICAL STRUCTURE) */}
+      <motion.div
+        {...fadeInUp}
+        transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-7xl mx-auto mb-32"
+      >
+        <div className="relative overflow-hidden rounded-2xl group mb-12">
+          <motion.div
+            initial={{ scaleX: 1 }}
+            whileInView={{ scaleX: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 bg-white origin-right z-10"
+          />
+
+          <div className="relative h-[500px] md:h-[700px] lg:h-[850px]">
+            <img
+              src={spaceTourismImage}
+              alt="SpaceTourism"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700">
+              <motion.div
+                initial={{ y: 40 }}
+                whileHover={{ y: 0 }}
+                className="text-center"
+              >
+                <p className="text-white text-3xl font-semibold mb-2">
+                  VIEW PROJECT
+                </p>
+                <p className="text-white/70 text-lg">Click to explore →</p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <a
+            href="https://spacetourism-gules.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 hover:text-[#D4AF37] transition-colors duration-300 cursor-pointer">
+              SPACETOURISM
+            </h3>
+          </a>
+
+          <p className="text-lg md:text-xl text-gray-400 leading-relaxed mb-8 max-w-3xl">
+            Space travel agency concept featuring immersive design and
+            interactive exploration. Modern UI showcasing destinations beyond
+            Earth.
+          </p>
+
+          <div className="flex flex-wrap gap-3 mb-10">
+            <span className="px-6 py-2.5 border border-[#333] rounded-full text-sm uppercase tracking-wide text-gray-400 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 cursor-pointer">
+              ANGULAR
+            </span>
+            <span className="px-6 py-2.5 border border-[#333] rounded-full text-sm uppercase tracking-wide text-gray-400 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 cursor-pointer">
+              TYPESCRIPT
+            </span>
+            <span className="px-6 py-2.5 border border-[#333] rounded-full text-sm uppercase tracking-wide text-gray-400 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 cursor-pointer">
+              JAVASCRIPT
+            </span>
+          </div>
+
+          <a
+            href="https://spacetourism-gules.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-[#D4AF37] font-semibold text-lg hover:gap-4 transition-all duration-300"
+          >
+            VISIT LIVE SITE
+            <span>→</span>
+          </a>
+        </div>
+      </motion.div>
+
+      {/* Bottom CTA */}
+      <div className="max-w-4xl mx-auto text-center mt-40">
+        <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-12">
+          Immersive experiences uniquely created based on user-insights and
+          design thinking methodologies. Always setting you apart from the
+          industry.
+        </p>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="px-14 py-5 border-2 border-white rounded-full text-sm font-semibold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all duration-300"
+        >
+          VIEW ALL WORK
+        </motion.button>
       </div>
     </section>
   );

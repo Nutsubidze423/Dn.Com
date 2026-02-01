@@ -1,96 +1,91 @@
 import { motion } from "framer-motion";
-import { personalInfo } from "../data/personal-info";
-import MagneticButton from "./MagneticButton";
+import insp3Image from "../assets/insp3.jpg";
+import insp1Image from "../assets/insp1.jpg";
 
 const InfoSection = () => {
   return (
-    <section className="py-48 bg-black relative overflow-hidden" id="info">
-      {/* Background elements */}
-      <div className="absolute inset-0">
+    <section className="relative py-40 px-8 md:px-20 overflow-hidden" id="info">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/insp1.jpg"
-          alt="Background"
-          className="w-full h-full object-cover opacity-30"
+          src={insp3Image}
+          alt=""
+          className="w-full h-full object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/85 to-black" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          {/* Left side - Text */}
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Section Title */}
+        <div className="mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="text-6xl md:text-7xl font-bold text-white mb-2"
           >
-            <h2
-              className="text-[120px] leading-[0.9] font-black mb-16"
-              style={{ letterSpacing: "-0.05em" }}
+            IN
+          </motion.h2>
+          <div className="flex items-center gap-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-6xl md:text-7xl font-bold text-white"
             >
-              ABOUT
-            </h2>
-            <div className="space-y-12 text-xl text-gray-300 leading-relaxed">
-              <p style={{ lineHeight: "1.8" }}>
-                Frontend developer focused on building clean, responsive, and
-                high-performance web interfaces with React.
-              </p>
-              <p style={{ lineHeight: "1.8" }}>
-                Strong foundation in HTML, CSS, and modern JavaScript, with
-                experience using frameworks and libraries to turn complex ideas
-                into intuitive user experiences.
-              </p>
-              <p style={{ lineHeight: "1.8" }}>
-                Detail-oriented, performance-driven, and comfortable working on
-                real-world projects from UI implementation to component
-                architecture.
-              </p>
-            </div>
-            <div className="mt-24">
-              <MagneticButton
-                href="#contact"
-                className="group relative px-16 py-8 text-2xl font-black uppercase tracking-wider"
-              >
-                <span className="relative z-10">GET IN TOUCH</span>
-                <div className="absolute inset-0 bg-yellow-400/10 group-hover:bg-yellow-400/20 rounded-full transition-colors duration-500" />
-                <div className="absolute right-6 top-1/2 -translate-y-1/2 group-hover:translate-x-3 transition-transform duration-500">
-                  <svg
-                    className="w-8 h-8"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </div>
-              </MagneticButton>
-            </div>
-          </motion.div>
+              FO
+            </motion.h2>
+            <p className="text-xl text-gray-500">﹁ ინ ფ ო რ მ ა ც ი ა ﹂</p>
+          </div>
+        </div>
 
-          {/* Right side - Image */}
+        {/* Content Grid */}
+        <div className="grid md:grid-cols-2 gap-20">
+          <div>
+            <motion.h3
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-10"
+            >
+              A cross-cultural perspective shaped by Georgian roots and modern
+              web development
+            </motion.h3>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-lg md:text-xl text-gray-300 leading-relaxed mb-12"
+            >
+              A development approach led by curiosity, precision, and user
+              empathy. All digital experiences created are crafted to be
+              intuitive, performant, and quietly delightful.
+            </motion.p>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-4 border-2 border-white rounded-full text-sm font-semibold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all duration-300"
+            >
+              READ MY STORY
+            </motion.button>
+          </div>
+
+          {/* Optional image */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="relative rounded-2xl overflow-hidden"
           >
-            <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
-              <img
-                src="/src/assets/insp3.jpg"
-                alt="Demetre Nutsubidze"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-8 -left-8 w-32 h-32 border-2 border-yellow-400 rounded-full opacity-30" />
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 border-2 border-yellow-400 rounded-full opacity-30" />
+            <img
+              src={insp1Image}
+              alt="About"
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
       </div>

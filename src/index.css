@@ -6,6 +6,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none !important;
+}
+
+/* Show default cursor on mobile */
+@media (max-width: 768px) {
+  * {
+    cursor: default !important;
+  }
 }
 
 body {
@@ -27,6 +35,7 @@ body {
   background-color: #000000;
   color: #ffffff;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 code {

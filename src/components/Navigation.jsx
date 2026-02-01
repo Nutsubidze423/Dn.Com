@@ -1,49 +1,47 @@
-import { motion } from 'framer-motion';
-import { Menu } from 'lucide-react';
+import { motion } from "framer-motion";
 
 const Navigation = () => {
   return (
-    <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 h-[80px] bg-background/80 backdrop-blur-sm border-b border-border px-5 md:px-20 flex items-center justify-between"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      {/* Logo */}
-      <div className="text-2xl font-bold text-textPrimary">
-        <span>D</span><span className="text-accentGold">N</span>
-      </div>
+    <nav className="fixed top-0 left-0 right-0 z-50 h-20 bg-black/80 backdrop-blur-md border-b border-[#1a1a1a]">
+      <div className="max-w-[1600px] mx-auto px-8 md:px-20 h-full flex items-center justify-between">
+        {/* Logo */}
+        <a
+          href="#home"
+          className="text-2xl font-bold text-white hover:text-[#D4AF37] transition-colors duration-300"
+        >
+          DN
+        </a>
 
-      {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center space-x-10">
-        <motion.a 
-          href="#home" 
-          className="text-sm font-normal tracking-[0.1em] uppercase text-textPrimary hover:text-accentGold transition-colors duration-[0.3s]"
-          whileHover={{ scale: 1.05 }}
-        >
-          Home
-        </motion.a>
-        <motion.a 
-          href="#projects" 
-          className="text-sm font-normal tracking-[0.1em] uppercase text-textPrimary hover:text-accentGold transition-colors duration-[0.3s]"
-          whileHover={{ scale: 1.05 }}
-        >
-          Projects
-        </motion.a>
-        <motion.a 
-          href="#info" 
-          className="text-sm font-normal tracking-[0.1em] uppercase text-textPrimary hover:text-accentGold transition-colors duration-[0.3s]"
-          whileHover={{ scale: 1.05 }}
-        >
-          Info
-        </motion.a>
-      </div>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-12">
+          <a
+            href="#home"
+            className="text-sm uppercase tracking-[0.15em] text-white hover:text-[#D4AF37] transition-colors duration-300"
+          >
+            HOME
+          </a>
+          <a
+            href="#projects"
+            className="text-sm uppercase tracking-[0.15em] text-white hover:text-[#D4AF37] transition-colors duration-300"
+          >
+            PROJECTS
+          </a>
+          <a
+            href="#info"
+            className="text-sm uppercase tracking-[0.15em] text-white hover:text-[#D4AF37] transition-colors duration-300"
+          >
+            INFO
+          </a>
+        </div>
 
-      {/* Mobile Menu */}
-      <div className="md:hidden">
-        <Menu className="w-6 h-6 text-textPrimary" />
+        {/* Mobile Menu Button */}
+        <button className="md:hidden text-white">
+          <div className="w-6 h-0.5 bg-white mb-1.5"></div>
+          <div className="w-6 h-0.5 bg-white mb-1.5"></div>
+          <div className="w-6 h-0.5 bg-white"></div>
+        </button>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 

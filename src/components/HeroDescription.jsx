@@ -1,89 +1,125 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import insp1Image from "../assets/insp1.jpg";
 
 const HeroDescription = () => {
-  const variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
+  const fadeInUp = {
+    initial: { opacity: 0, y: 100 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
   };
 
   return (
-    <section className="py-40 md:py-60 bg-background">
-      <div className="container mx-auto px-5 md:px-20 max-w-6xl">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={variants}
+    <section className="relative py-40 px-8 md:px-20 overflow-hidden">
+      {/* Background Image - FULL SECTION BACKGROUND */}
+      <div className="absolute inset-0 z-0">
+          <img
+            src={insp1Image}
+            alt=""
+            className="w-full h-full object-cover opacity-10"
+          />
+        {/* Gradient overlay to blend into black */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto">
+        {/* Small intro */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-xs uppercase tracking-[0.3em] text-[#D4AF37] mb-6"
         >
-          {/* Small Heading */}
-          <div className="text-xs md:text-sm font-normal tracking-[0.2em] uppercase text-accentGold mb-4">
-            DN
-          </div>
+          DN
+        </motion.p>
 
-          {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-textPrimary mb-6">
-            is the folio of
-          </h1>
+        {/* Large title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+        >
+          is the folio of
+        </motion.h2>
 
-          <div className="text-5xl md:text-8xl font-bold tracking-tight text-textPrimary mb-6">
-            <div>Demetre</div>
-            <div>Nutsubidze ↓</div>
-          </div>
+        {/* Name - HUGE */}
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] mb-2"
+        >
+          Demetre
+        </motion.h1>
 
-          {/* Subtitle */}
-          <div className="text-lg md:text-xl font-normal tracking-[0.15em] uppercase text-textSecondary mb-4">
-            Front End Developer, Swimmer
-          </div>
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] mb-12"
+        >
+          Nutsubidze ↓
+        </motion.h1>
 
-          {/* Job Description */}
-          <div className="text-sm font-normal text-mediumGray mb-8">
-            Based in Tbilisi, Georgia
-          </div>
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="text-lg uppercase tracking-[0.2em] text-gray-400 mb-4"
+        >
+          FRONT END DEVELOPER, SWIMMER
+        </motion.p>
 
-          {/* Bio Paragraph */}
-          <p className="text-lg md:text-xl font-light leading-[1.7] text-lightGray max-w-3xl mb-12">
-            Frontend developer focused on building clean, responsive, and high-performance web interfaces with React. 
-            Strong foundation in HTML, CSS, and modern JavaScript, with experience using frameworks and libraries to turn 
-            complex ideas into intuitive user experiences. Detail-oriented, performance-driven, and comfortable working 
-            on real-world projects from UI implementation to component architecture.
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-sm uppercase tracking-[0.15em] text-gray-600 mb-12"
+        >
+          BASED IN TBILISI, GEORGIA
+        </motion.p>
+
+        {/* Bio */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7 }}
+          className="text-lg text-gray-300 leading-relaxed max-w-3xl mb-16"
+        >
+          Frontend developer focused on building clean, responsive, and
+          high-performance web interfaces with React. Strong foundation in HTML,
+          CSS, and modern JavaScript, with experience using frameworks and
+          libraries to turn complex ideas into intuitive user experiences.
+        </motion.p>
+
+        {/* Greeting section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8 }}
+          className="space-y-4"
+        >
+          <p className="text-2xl font-medium">
+            <span className="text-[#D4AF37]">[</span>
+            NICE TO MEET YOU
+            <span className="text-[#D4AF37]">]</span>
           </p>
-
-          {/* Greeting Section */}
-          <div className="space-y-5">
-            <motion.div
-              className="text-2xl md:text-3xl font-medium"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              <span className="text-textPrimary">[Nice to meet you]</span>
-            </motion.div>
-            
-            <motion.div
-              className="text-2xl md:text-3xl font-medium text-textSecondary"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.7, duration: 0.8 }}
-            >
-              「გამარჯობა」
-            </motion.div>
-            
-            <motion.div
-              className="text-2xl md:text-3xl font-medium text-accentGold"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.9, duration: 0.8 }}
-            >
-              [Scroll Down]
-            </motion.div>
-          </div>
+          <p className="text-2xl text-gray-400">「გამარჯობა」</p>
+          <p className="text-xl text-gray-500">
+            <span className="text-[#D4AF37]">[</span>
+            SCROLL DOWN
+            <span className="text-[#D4AF37]">]</span>
+          </p>
         </motion.div>
       </div>
     </section>
