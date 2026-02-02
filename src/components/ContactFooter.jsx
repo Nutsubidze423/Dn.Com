@@ -29,7 +29,7 @@ const ContactFooter = () => {
           </h2>
 
           <div className="text-2xl md:text-4xl font-light text-textSecondary mb-8">
-            ﹁ გ ა მ ა რ ჯ ო ბ ა ﹂
+            ﹁ კ ო ნ ტ ა ქ ტ ი ﹂
           </div>
 
           {/* Contact Info */}

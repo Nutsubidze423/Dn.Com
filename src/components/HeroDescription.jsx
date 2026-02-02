@@ -2,123 +2,142 @@ import { motion } from "framer-motion";
 import insp1Image from "../assets/insp1.jpg";
 
 const HeroDescription = () => {
+  // Animation variants
   const fadeInUp = {
-    initial: { opacity: 0, y: 100 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -80 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
   };
 
   return (
-    <section className="relative py-40 px-8 md:px-20 overflow-hidden">
-      {/* Background Image - FULL SECTION BACKGROUND */}
-      <div className="absolute inset-0 z-0">
-          <img
-            src={insp1Image}
-            alt=""
-            className="w-full h-full object-cover opacity-10"
-          />
-        {/* Gradient overlay to blend into black */}
+    <section className="relative min-h-screen py-32 px-8 md:px-12 overflow-hidden bg-black">
+      {/* Background Image with parallax */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        initial={{ scale: 1.1 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <img
+          src={insp1Image}
+          alt=""
+          className="w-full h-full object-cover opacity-30"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
-      </div>
+      </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Small intro */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+      <div className="max-w-[1800px] mx-auto relative z-10">
+        {/* Main Content */}
+        <div className="min-h-[70vh] flex flex-col justify-center">
+          {/* Large Typography - Staggered reveal */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="mb-16"
+          >
+            <motion.h2 variants={slideInLeft} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">
+              <span className="text-[#D4AF37]">DN</span> IS THE FOLIO OF
+            </motion.h2>
+            <motion.h1 variants={slideInLeft} className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight">
+              DEMETRE [<span className="text-[#D4AF37]">DEMETRE</span>] NUTSUBIDZE
+            </motion.h1>
+          </motion.div>
+
+          {/* Role - Staggered */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-16"
+          >
+            <motion.p variants={fadeInUp} className="text-2xl md:text-3xl lg:text-4xl text-white/80 font-light">
+              FRONTEND DEVELOPER, <span className="italic text-[#D4AF37]">creative</span> THINKER
+            </motion.p>
+            <motion.p variants={fadeInUp} className="text-2xl md:text-3xl lg:text-4xl text-white/80 font-light">
+              AND <span className="italic text-[#D4AF37]">passionate</span> CODER
+            </motion.p>
+          </motion.div>
+        </div>
+
+        {/* Bottom Bar - Staggered */}
+        <motion.div 
+          className="flex justify-between items-end pt-20 border-t border-white/10"
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          className="text-xs uppercase tracking-[0.3em] text-[#D4AF37] mb-6"
+          variants={staggerContainer}
         >
-          DN
-        </motion.p>
+          <motion.p variants={fadeInUp} className="text-xs tracking-[0.2em] text-white/60">
+            [NICE TO MEET YOU]
+          </motion.p>
 
-        {/* Large title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
-        >
-          is the folio of
-        </motion.h2>
+          <motion.div variants={fadeInUp} className="flex items-center gap-2 text-xs tracking-[0.2em] text-white/60">
+            <span>[SCROLL</span>
+            <span className="text-[#D4AF37]">ჩამოდი</span>
+            <span>DOWN]</span>
+            <motion.span
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            >
+              ↓
+            </motion.span>
+          </motion.div>
 
-        {/* Name - HUGE */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] mb-2"
-        >
-          Demetre
-        </motion.h1>
+          <motion.p variants={fadeInUp} className="text-xs tracking-[0.2em] text-white/60">
+            ﹁ სასიამოვნოა გაცნობა ﹂
+          </motion.p>
+        </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] mb-12"
-        >
-          Nutsubidze ↓
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-lg uppercase tracking-[0.2em] text-gray-400 mb-4"
-        >
-          FRONT END DEVELOPER, SWIMMER
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="text-sm uppercase tracking-[0.15em] text-gray-600 mb-12"
-        >
-          BASED IN TBILISI, GEORGIA
-        </motion.p>
-
-        {/* Bio */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7 }}
-          className="text-lg text-gray-300 leading-relaxed max-w-3xl mb-16"
-        >
-          Frontend developer focused on building clean, responsive, and
-          high-performance web interfaces with React. Strong foundation in HTML,
-          CSS, and modern JavaScript, with experience using frameworks and
-          libraries to turn complex ideas into intuitive user experiences.
-        </motion.p>
-
-        {/* Greeting section */}
+        {/* Bio Text - Fade in */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          className="space-y-4"
+          transition={{ delay: 0.3, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-2xl mx-auto text-center mt-32 mb-20"
         >
-          <p className="text-2xl font-medium">
-            <span className="text-[#D4AF37]">[</span>
-            NICE TO MEET YOU
-            <span className="text-[#D4AF37]">]</span>
+          <p className="text-xs tracking-[0.3em] text-[#D4AF37] mb-6">
+            SR FRONTEND DEVELOPER @ FREELANCE
           </p>
-          <p className="text-2xl text-gray-400">「გამარჯობა」</p>
-          <p className="text-xl text-gray-500">
-            <span className="text-[#D4AF37]">[</span>
-            SCROLL DOWN
-            <span className="text-[#D4AF37]">]</span>
+          <p className="text-xs tracking-[0.2em] text-white/40 mb-8">
+            BASED IN TBILISI
+          </p>
+          <p className="text-white/60 leading-relaxed">
+            I partner with brands, companies and entrepreneurs to transform visions into
+            captivating experiences, all designed with the users at the helm.
           </p>
         </motion.div>
       </div>
