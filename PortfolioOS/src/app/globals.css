@@ -26,14 +26,8 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   margin: 0;
   padding: 0;
-}
-
-/* ── Custom pixel cursor ── */
-body {
-  cursor: default;
 }
 
 /* ── Win98 bevel utilities ── */
@@ -61,10 +55,6 @@ body {
   content: '█';
   animation: blink 1s step-end infinite;
   color: var(--color-phosphor);
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
 }
 
 /* ── CRT Scanlines (applied via component overlay) ── */
@@ -116,7 +106,14 @@ body {
   height: 16px;
 }
 
+/* ── Firefox scrollbar ── */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-chrome) var(--color-chrome-dark);
+}
+
 /* ── Window drag ── */
 .window-dragging {
+  -webkit-user-select: none;
   user-select: none;
 }

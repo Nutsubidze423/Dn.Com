@@ -31,7 +31,7 @@ const config: Config = {
           '50%': { opacity: '0' },
         },
         scanline: {
-          '0%': { transform: 'translateY(-100%)' },
+          '0%': { transform: 'translateY(-100vh)' },
           '100%': { transform: 'translateY(100vh)' },
         },
       },
