@@ -1,35 +1,34 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { VT323, Share_Tech_Mono } from 'next/font/google'
+import './globals.css'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-vt323',
+  display: 'swap',
+})
+
+const shareTechMono = Share_Tech_Mono({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-share-tech-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: "PortfolioOS",
-  description: "Demetre Nutsubidze — Portfolio as a Desktop OS",
-};
+  title: 'Demetre Nutsubidze — Portfolio',
+  description: 'Front End Developer Portfolio',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${vt323.variable} ${shareTechMono.variable}`}>
+      <body className="overflow-hidden bg-[#0a0a0f]">{children}</body>
     </html>
-  );
+  )
 }
