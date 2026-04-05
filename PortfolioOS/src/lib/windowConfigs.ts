@@ -2,6 +2,9 @@ import { AppId, WindowState } from '@/types'
 
 type WindowDefaults = Pick<WindowState, 'title' | 'size' | 'position'>
 
+// NOTE: position values are cascade offsets for initial placement.
+// The window manager should center windows on first open for small viewports.
+// These are overridden once the user drags a window.
 export const WINDOW_CONFIGS: Record<AppId, WindowDefaults> = {
   'about-me': {
     title: 'About Me — Notepad',
